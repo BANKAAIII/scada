@@ -1,0 +1,20 @@
+{
+  "name": "tsserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"tsc -b",
+    "dev":"node dist/index.js",
+    "start":"tsc -b && node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@types/node": "^26.4.0",
+    "net": "^1.0.2"
+  }
+}
