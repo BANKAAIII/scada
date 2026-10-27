@@ -1,0 +1,47 @@
+version : '3.8'
+
+networks:
+  scada-net:
+    driver: bridge
+
+services:
+  tsserver:
+    build: ./tsserver
+    container_name: tsserver
+    ports:
+      - "5021:5021"
+    networks:
+      - scada-net
+
+  plchardware:
+    build: ./plchardware
+    container_name: plchardware
+    ports:
+      - "5020:5020"
+    networks:
+      - scada-net
+
+  fuxa:
+    image: frangoteam/fuxa
+    container_name: fuxa
+    ports:
+      - "1881:1881"
+    depends_on:
+      - tsserver
+    networks:
+      - scada-net
+
+  attacks:
+    build:
+      context: ./attacks
+      dockerfile: dockerfile.attack
+    container_name: attacks
+    depends_on:
+      - plchardware
+    networks:
+      - scada-net
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    stdin_open: true
+    tty: true
