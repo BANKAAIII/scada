@@ -2,7 +2,7 @@ import net from 'net';
 
 const PROXY_PORT = 5021; // FUXA connects here
 const PLC_PORT = 5020;    // PLC Simulator listening port
-const PLC_HOST = 'cd at'; // Or use 'plchardware' if running inside docker network container name resolution
+const PLC_HOST = 'plchardware' ; // Or use 'plchardware' if running inside docker network container name resolution
 
 const proxyServer = net.createServer((fuxaSocket) => {
     console.log('[PROXY] FUXA client connected to port 5021.');
